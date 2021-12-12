@@ -54,12 +54,12 @@ var visited = [
   //'Wyoming'
   ];
 
-  var trip = [
+var trip = [
   //'Alabama',
   //'Alaska',
   'Arizona',
   'Arkansas',
-  'California',
+  //'California',
   //'Colorado',
   'Connecticut',
   //'Delaware',
@@ -83,7 +83,7 @@ var visited = [
   //'Missouri',
   //'Montana',
   //'Nebraska',
-  'Nevada',
+  //'Nevada',
   //'New Hampshire',
   'New Jersey',
   'New Mexico',
@@ -102,13 +102,25 @@ var visited = [
   //'Utah',
   //'Vermont',
   'Virginia',
-  'Washington',
+  //'Washington',
   'West Virginia',
   //'Wisconsin',
   //'Wyoming'
   ];
 
 
+var stays = [
+  [-76.8225, 42.6140], // Lodi, NY
+  [-74.8185, 41.6583], // Smallwood, NY
+  [-77.7389,39.3254], // Harpers Ferry, WV
+  [-82.5515, 35.5951], // Asheville, NC
+  [-86.7816,36.1627], // Nashville, TN
+  [-84.3880, 33.7490], // Atlanta, GA
+  [-93.0552, 34.5037], // Hot Springs, AR
+  [-97.7431, 30.2672], // Austin, TX
+  [-104.0206, 30.3095], //marfa, TX
+  [-105.9603, 32.8995] // Alamogordo, NM
+]
 function fillIn(map, state, index, color) {
 
   map.addSource(state + index, {
@@ -136,6 +148,9 @@ function fillIn(map, state, index, color) {
    })
 }
 window.addEventListener('load', (event) => {
+
+  document.getElementById('js-states-visited').innerHTML = trip.length-1; /*for DC */
+  document.getElementById('js-stops-visited').innerHTML = stays.length; /*for DC */
   const map = new mapboxgl.Map({
      container: 'map', // container ID
      style: 'mapbox://styles/mapbox/light-v10', // style URL
@@ -145,31 +160,23 @@ window.addEventListener('load', (event) => {
 
   map.on('load', () => {
 
-    visited.forEach(function(state,index){
-      fillIn(map, state, index + 'v', '#0080ff' /*blue color fill*/);
-    });
+    /*visited.forEach(function(state,index){
+      fillIn(map, state, index + 'v', '#0080ff');
+    });*/
 
+    // outline each visited statte
     trip.forEach(function(state,index){
       fillIn(map, state, index + 't', '#0000ff' /*pink color fill*/);
     });
 
+    stays.forEach(function(stay, index){
+      new mapboxgl.Marker().setLngLat(stay).addTo(map);
+    });
+
+
+
     const legendEl = document.getElementById('legend');
-
     legendEl.style.display = 'block';
-
-
-   // Add a new layer to visualize the polygon.
-   /*map.addLayer({
-   'id': 'maine',
-   'type': 'fill',
-   'source': 'maine', // reference the data source
-   'layout': {},
-   'paint': {
-   'fill-color': '#0080ff', // blue color fill
-   'fill-opacity': 0.5
-   }
-   });*/
-   // Add a black outline around the polygon.
 
   });
 });

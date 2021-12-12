@@ -10926,11 +10926,6 @@ window.states.features.forEach(function(
         coordinates =
             coordinates[0];
     }
-    console.log('------')
-    console.log(feature
-        .properties.name);
-    console.log(coordinates);
-    console.log('------')
     window.statesList[feature
             .properties.name] =
         coordinates;
