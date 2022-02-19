@@ -59,7 +59,7 @@ var trip = [
   //'Alaska',
   'Arizona',
   'Arkansas',
-  //'California',
+  'California',
   //'Colorado',
   'Connecticut',
   //'Delaware',
@@ -83,7 +83,7 @@ var trip = [
   //'Missouri',
   //'Montana',
   //'Nebraska',
-  //'Nevada',
+  'Nevada',
   //'New Hampshire',
   'New Jersey',
   'New Mexico',
@@ -119,7 +119,13 @@ var stays = [
   [-93.0552, 34.5037], // Hot Springs, AR
   [-97.7431, 30.2672], // Austin, TX
   [-104.0206, 30.3095], //marfa, TX
-  [-105.9603, 32.8995] // Alamogordo, NM
+  [-105.9603, 32.8995], // Alamogordo, NM
+  [-112.0740, 33.4484], // Phoenix, AZ
+  [-115.9839, 36.2083], // Pahrump, NV
+  [-116.5453, 33.8303],  // Palm Springs, CA
+  [-115.1398, 36.1699], // Las Vegas, NV
+  [-117.1611, 32.7157] // San Diego, CA
+
 ]
 function fillIn(map, state, index, color) {
 
